@@ -1,14 +1,20 @@
 const express = require('express');
-const router = express.Router();
+const cors = require('cors')
+const maravilhosas = express.Router();
+const controller = require('../controllers/maravilhosas-controller')
+
+
 
 //get /maravilhosas
-
+maravilhosas.get('/maravilhosas', controller.getMaravilhosas)
 //post /maravilhosas
-
+maravilhosas.post('/maravilhosas', controller.addMaravilhosas)
 //get /maravilhosas/id
-
+maravilhosas.get('/maravilhosas/:id', controller.getMaravilhosasById)
 //put /maravilhosas/id
-
+maravilhosas.put('/maravilhosas/:id', cors(), controller.updateMaravilhosa)
 //delete /maravilhosas/id
+maravilhosas.delete('/maravilhosas/:id', cors(), controller.deleteMaravilhosa)
 
-module.exports = router;
+
+module.exports = maravilhosas;
